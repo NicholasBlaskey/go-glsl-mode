@@ -14,11 +14,20 @@
     pos))
 
 (defface go-sql-keyword-face
-  '((((class grayscale))  :slant nil :inherit font-lock-string-face)
-    (((class color)) :slant italic :inherit font-lock-string-face)
-    (t :slant nil :inherit font-lock-string-face))
-  "Face to highlight SQL keywords within go strings."
-  :group 'go-sql)
+  '((((class color) (min-colors 88) (background light))
+     :background "darkseagreen2")
+    (((class color) (min-colors 88) (background dark))
+     :background "darkolivegreen")
+    (((class color) (min-colors 16) (background light))
+     :background "darkseagreen2")
+    (((class color) (min-colors 16) (background dark))
+    :background "darkolivegreen")
+    (((class color) (min-colors 8))
+     :background "green" :foreground "black")
+    (t :inverse-video t))
+  "Basic face for highlighting."
+  :group 'basic-faces)
+
 
 (defcustom go-sql-keyword-face 'go-sql-keyword-face
   "Face to highlight SQL keywords within go strings."
@@ -32,4 +41,12 @@
    '((go-sql-keyword-matcher 0 go-sql-keyword-face t))
    'append))
 
+(remove-hook 'go-mode-hook 'go-add-sql-keyword-matcher)
 (add-hook 'go-mode-hook 'go-add-sql-keyword-matcher)
+
+;(define-minor-mode blah-mode
+;  (font-lock-add-keywords
+;   nil
+;   '((go-sql-keyword-matcher 0 go-sql-keyword-face t))
+;   'append))
+  

@@ -1,5 +1,6 @@
 (require 'sql) ;; for sql-keywords
 (require 'go-mode) ;; for go-mode-hook
+(require 'glsl-mode) ;; for syntax hightlighting
 
 ; https://emacs.stackexchange.com/questions/10165/can-i-add-highlighting-in-a-minor-mode
 (defvar go-sql-keywords (concat "\\<" (mapconcat 'car sql-mode-ansi-font-lock-keywords "\\|") "\\>")
@@ -38,7 +39,7 @@
   "Hook to add fontification of sql-keywords in strings."
   (font-lock-add-keywords
    nil
-   '((go-sql-keyword-matcher 0 go-sql-keyword-face t))
+   '((go-sql-keyword-matcher 0 glsl-type-face t))
    'append))
 
 (remove-hook 'go-mode-hook 'go-add-sql-keyword-matcher)

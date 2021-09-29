@@ -5,7 +5,7 @@ import (
 )
 
 const baseVertexShader = `
-    #version 410 core
+    #version 410 core 
     precision highp float;
 
     layout (location = 0) in vec2 aPosition;

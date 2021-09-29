@@ -4,11 +4,13 @@
 
 
 
-; https://emacs.stackexchange.com/questions/10165/can-i-add-highlighting-in-a-minor-mode
-(defvar go-sql-keywords (concat "\\<" (mapconcat 'car glsl-font-lock-keywords "\\|") "\\>")
-  "SQL keywords for go-mode stolen from ` glsl-type-list'.")
+;(message glsl-font-lock-keywords-1)
 
-(message go-sql-keywords)
+; https://emacs.stackexchange.com/questions/10165/can-i-add-highlighting-in-a-minor-mode
+;(defvar go-sql-keywords (concat "\\<" (mapconcat 'car glsl-font-lock-keywords "\\|") "\\>")
+;  "SQL keywords for go-mode stolen from ` glsl-type-list'.")
+
+;(message go-sql-keywords)
 ;(message "My list is %s" (list glsl-type-list)) 
 ;(message "My list is %s" sql-mode-ansi-font-lock-keywords)
 
@@ -35,8 +37,22 @@
    '((go-sql-keyword-matcher 0 glsl-type-face t))
    'append))
 
-(remove-hook 'go-mode-hook 'go-add-sql-keyword-matcher)
-(add-hook 'go-mode-hook 'go-add-sql-keyword-matcher)
+
+(defun message2 (val)
+  (message (nth 0 val))
+ )
+  
+(mapcar 'message2 glsl-font-lock-keywords-1)
+
+(defun test ()
+  (message hello)
+)
+  
+;(remove-hook 'go-mode-hook 'go-add-sql-keyword-matcher)
+;(add-hook 'go-mode-hook 'go-add-sql-keyword-matcher)
+
+(remove-hook 'go-mode-hook 'test)
+(add-hook 'go-mode-hook 'test)
 
 
 ;(define-minor-mode blah-mode

@@ -14,6 +14,11 @@
     pos))
 
 
+(defun test-match-regexes ()
+  (message (nth 0 val))
+  )
+  
+
 ;(message (nth 1 (nth 4 glsl-font-lock-keywords-1)))
 
 ;(nth 4 glsl-font-lock-keywords-1)
@@ -21,11 +26,11 @@
   "Hook to add fontification of sql-keywords in strings."
   (mapcar (lambda (keywords)
             (progn
-              (defvar val keywords)
-              (message (nth 0 val))              
+              (set 'val keywords)
+              (test-match-regexes)
               (font-lock-add-keywords
                nil
-               '((match-regexes 0 glsl-keyword-face t))               
+               '((match-regexes 0 (nth 0 glsl-font-lock-keywords-1) t))
                'append)))
           glsl-font-lock-keywords)
   )

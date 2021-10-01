@@ -26,11 +26,11 @@
   "Hook to add fontification of sql-keywords in strings."
   (mapcar (lambda (keywords)
             (progn
-              (set 'val keywords)
+              (setq val keywords)
               (test-match-regexes)
               (font-lock-add-keywords
                nil
-               '((match-regexes 0 (nth 0 glsl-font-lock-keywords-1) t))
+               '((match-regexes 0 val t))
                'append)))
           glsl-font-lock-keywords)
   )
